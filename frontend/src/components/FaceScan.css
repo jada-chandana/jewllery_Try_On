@@ -1,0 +1,172 @@
+
+.facescan-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+  text-align: center;
+  color: #30201f;
+}
+
+.facescan-heading span {
+  color: #a77b43;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.facescan-heading h2 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  margin: 12px 0;
+}
+
+.facescan-heading p {
+  color: #8b817b;
+  font-size: 14px;
+}
+
+.facescan-preview {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  aspect-ratio: 4 / 5;
+  margin: 28px auto;
+  background: #eee8e1;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.facescan-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.facescan-hidden-video {
+  display: none;
+}
+
+.facescan-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #77665b;
+}
+
+.facescan-camera-icon {
+  font-size: 55px;
+  color: #a77b43;
+}
+
+.facescan-placeholder h3 {
+  font-family: Georgia, serif;
+  font-size: 22px;
+}
+
+.facescan-placeholder p {
+  font-size: 13px;
+}
+
+.facescan-status {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 9px 14px;
+  border-radius: 30px;
+  background: rgba(35, 25, 23, 0.8);
+  color: white;
+  font-size: 12px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #e6ad4b;
+}
+
+.status-dot.active {
+  background: #62d69a;
+}
+
+.facescan-product {
+  color: #6c5141;
+  margin: 15px 0;
+}
+
+.facescan-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.facescan-actions button,
+.facescan-upload {
+  padding: 13px 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.facescan-primary {
+  background: #542b32;
+  color: white;
+}
+
+.facescan-stop {
+  background: #8b3c3c;
+  color: white;
+}
+
+.facescan-upload {
+  background: #e8d8c3;
+  color: #4b342b;
+}
+
+.facescan-download {
+  background: #d1ad79;
+  color: #30201f;
+}
+
+.facescan-actions button:hover,
+.facescan-upload:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.facescan-error {
+  color: #c0392b;
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+  .facescan-container {
+    padding: 14px;
+  }
+
+  .facescan-heading h2 {
+    font-size: 27px;
+  }
+
+  .facescan-actions {
+    flex-direction: column;
+  }
+
+  .facescan-actions button,
+  .facescan-upload {
+    width: 100%;
+  }
+}

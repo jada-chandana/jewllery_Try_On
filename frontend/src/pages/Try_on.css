@@ -1,0 +1,388 @@
+
+/* =========================================
+   AURELLE - VIRTUAL JEWELLERY TRY ON
+   Matching Try_on.jsx
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #f8f5f0;
+  color: #29231f;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* MAIN PAGE */
+
+.tryon-page {
+  min-height: 100vh;
+  padding: 35px 5%;
+  background: linear-gradient(135deg, #fbf8f3, #f3ede4);
+}
+
+/* HEADER */
+
+.tryon-header {
+  text-align: center;
+  padding: 25px 15px 35px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e5d8c6;
+}
+
+.tryon-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 43px);
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #30231b;
+}
+
+.tryon-header p {
+  margin-top: 10px;
+  color: #9b7952;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* MAIN CONTENT */
+
+.tryon-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.85fr);
+  gap: 28px;
+  max-width: 1400px;
+  margin: auto;
+  align-items: start;
+}
+
+/* CAMERA PREVIEW */
+
+.tryon-preview {
+  position: relative;
+  min-width: 0;
+  min-height: 480px;
+  padding: 20px;
+  overflow: hidden;
+  background: #fffdf9;
+  border: 1px solid #e7dccd;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(65, 45, 25, 0.07);
+}
+
+/* CANVAS */
+
+.capture-canvas {
+  width: 100%;
+  max-width: 700px;
+  min-height: 350px;
+  max-height: 600px;
+  margin: auto;
+  object-fit: contain;
+  border-radius: 9px;
+  background: #eae5dd;
+}
+
+/* EMPTY PREVIEW */
+
+.preview-placeholder {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.preview-placeholder h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: 500;
+  color: #59432f;
+}
+
+.preview-placeholder p {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #947b62;
+}
+
+/* STATUS */
+
+.camera-status {
+  margin-top: 18px;
+  text-align: center;
+  color: #967348;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.face-status {
+  margin-top: 8px;
+  text-align: center;
+  color: #6f695f;
+  font-size: 13px;
+}
+
+/* ERROR */
+
+.tryon-error {
+  grid-column: 1 / -1;
+  padding: 13px 16px;
+  background: #fff0ed;
+  border: 1px solid #edc5bd;
+  border-radius: 8px;
+  color: #a33d30;
+  font-size: 13px;
+}
+
+/* CONTROLS */
+
+.tryon-controls {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px;
+  background: #fffdf9;
+  border: 1px solid #e7dccd;
+  border-radius: 12px;
+}
+
+.tryon-controls button {
+  min-width: 130px;
+  padding: 12px 18px;
+  border: 1px solid #ad8552;
+  border-radius: 6px;
+  background: #fffdf9;
+  color: #76542e;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tryon-controls button:hover:not(:disabled) {
+  background: #a77b45;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.tryon-controls button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* PRODUCT SECTION */
+
+.product-section {
+  min-width: 0;
+  padding: 24px;
+  background: #fffdf9;
+  border: 1px solid #e7dccd;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(65, 45, 25, 0.05);
+}
+
+.product-section h2 {
+  margin-bottom: 22px;
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: 500;
+  text-align: center;
+  color: #34271e;
+}
+
+/* CATEGORY BUTTONS */
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  margin-bottom: 24px;
+}
+
+.category-list button {
+  padding: 9px 15px;
+  border: 1px solid #d8c5aa;
+  border-radius: 30px;
+  background: transparent;
+  color: #80603c;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.category-list button:hover,
+.category-list button.active {
+  background: #a77b45;
+  border-color: #a77b45;
+  color: #fff;
+}
+
+/* PRODUCT GRID */
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.product-list > p {
+  grid-column: 1 / -1;
+  padding: 25px 10px;
+  text-align: center;
+  color: #8b7967;
+  font-size: 13px;
+}
+
+/* PRODUCT CARD */
+
+.product-card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #eee5d9;
+  border-radius: 9px;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: #c6a477;
+  box-shadow: 0 8px 20px rgba(65, 45, 25, 0.09);
+}
+
+.product-card img {
+  display: block;
+  width: 100%;
+  height: 145px;
+  object-fit: contain;
+  background: #f8f5f0;
+  border-radius: 6px;
+}
+
+.product-card h3 {
+  margin-top: 13px;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #403126;
+}
+
+.product-card p {
+  margin: 8px 0 12px;
+  color: #a77b45;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.product-card button {
+  width: 100%;
+  padding: 10px 8px;
+  border: none;
+  border-radius: 5px;
+  background: #30251f;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.product-card button:hover {
+  background: #a77b45;
+}
+
+/* TABLET */
+
+@media (max-width: 950px) {
+  .tryon-container {
+    grid-template-columns: 1fr;
+  }
+
+  .tryon-preview {
+    min-height: 400px;
+  }
+
+  .product-section {
+    width: 100%;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .tryon-page {
+    padding: 15px 12px;
+  }
+
+  .tryon-header {
+    padding: 20px 5px 25px;
+  }
+
+  .tryon-header h1 {
+    font-size: 25px;
+    letter-spacing: 1.5px;
+  }
+
+  .tryon-preview {
+    min-height: 300px;
+    padding: 12px;
+  }
+
+  .capture-canvas {
+    min-height: 250px;
+  }
+
+  .preview-placeholder h2 {
+    font-size: 21px;
+  }
+
+  .tryon-controls {
+    padding: 14px;
+    gap: 9px;
+  }
+
+  .tryon-controls button {
+    min-width: 115px;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .product-section {
+    padding: 15px;
+  }
+
+  .product-list {
+    gap: 10px;
+  }
+
+  .product-card {
+    padding: 8px;
+  }
+
+  .product-card img {
+    height: 105px;
+  }
+
+  .product-card h3 {
+    font-size: 13px;
+  }
+}

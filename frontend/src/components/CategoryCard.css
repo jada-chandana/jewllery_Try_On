@@ -1,0 +1,73 @@
+
+.category-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  color: #49201f;
+}
+
+.category-image {
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  background: #eee4d8;
+}
+
+.category-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.category-card:hover .category-image img {
+  transform: scale(1.06);
+}
+
+.category-arrow {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  background: #faf7f2;
+  color: #49201f;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.category-card:hover .category-arrow {
+  background: #49201f;
+  color: #fff;
+}
+
+.category-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 22px;
+  margin-top: 17px;
+  color: #49201f;
+}
+
+.category-card p {
+  font-size: 10px;
+  color: #918174;
+  margin-top: 6px;
+}
+
+@media (max-width: 650px) {
+  .category-image {
+    height: 220px;
+  }
+
+  .category-card h3 {
+    font-size: 19px;
+  }
+}
