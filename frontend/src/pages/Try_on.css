@@ -70,7 +70,7 @@ button {
 .tryon-preview {
   position: relative;
   min-width: 0;
-  min-height: 480px;
+  min-height: 600px;
   padding: 20px;
   overflow: hidden;
   background: #fffdf9;
@@ -84,10 +84,9 @@ button {
 .capture-canvas {
   width: 100%;
   max-width: 700px;
-  min-height: 350px;
-  max-height: 600px;
+  height: 500px;
   margin: auto;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 9px;
   background: #eae5dd;
 }
