@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELLE Background Removal Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 12px 0;
+      cursor: pointer;
+    }
+
+    .images {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .images div {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <h1>AURELLE Background Removal Test</h1>
+
+  <p>Select a jewellery product image from your computer.</p>
+
+  <input type="file" id="imageInput" accept="image/*" />
+
+  <br />
+
+  <button id="processButton">Remove Background</button>
+
+  <p id="status">Waiting for image...</p>
+
+  <div class="images">
+    <div>
+      <h3>Original Image</h3>
+      <img id="original" />
+    </div>
+
+    <div>
+      <h3>Transparent Image</h3>
+      <img id="result" />
+    </div>
+  </div>
+
+  <script type="module">
+    import { removeBackground } from "./src/utils/removeBackground.js";
+
+    const input = document.getElementById("imageInput");
+    const button = document.getElementById("processButton");
+    const status = document.getElementById("status");
+    const original = document.getElementById("original");
+    const result = document.getElementById("result");
+
+    let outputUrl = null;
+
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+
+      if (!file) return;
+
+      original.src = URL.createObjectURL(file);
+      result.removeAttribute("src");
+      status.textContent = "Image selected.";
+    });
+
+    button.addEventListener("click", async () => {
+      const file = input.files[0];
+
+      if (!file) {
+        status.textContent = "Please select an image first.";
+        return;
+      }
+
+      try {
+        button.disabled = true;
+        status.textContent = "Removing background... Please wait.";
+
+        // This test uses the selected local file.
+        const imageUrl = URL.createObjectURL(file);
+
+        try {
+          outputUrl = await removeBackground(imageUrl);
+        } finally {
+          URL.revokeObjectURL(imageUrl);
+        }
+
+        result.src = outputUrl;
+        status.textContent = "Background removal completed!";
+      } catch (error) {
+        console.error(error);
+        status.textContent = "Error: " + error.message;
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

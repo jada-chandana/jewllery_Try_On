@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo Jewellery Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #faf7f2;
+    }
+    .product {
+      background: white;
+      padding: 20px;
+      width: 280px;
+      border-radius: 12px;
+    }
+    img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+    }
+    button {
+      padding: 12px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Demo Jewellery Store</h2>
+
+  <div class="product" data-product-id="necklace-001">
+  <h1>Royal Pearl Necklace</h1>
+
+  <img
+    src="http://localhost:5173/jewellery/royal-pearl-necklace.webp"
+    alt="Royal Pearl Necklace"
+  />
+
+  <p class="price">Price: ₹1,499</p>
+
+  <button>Add to Cart</button>
+</div>
+
+
+<!-- AURELLE integration -->
+<script
+  src="http://localhost:5173/embed.js"
+  data-aurelle
+  data-api-url="http://localhost:5000"
+  data-widget-url="http://localhost:5173/try-on"
+  defer
+></script>
+
+</body>
+</html>
